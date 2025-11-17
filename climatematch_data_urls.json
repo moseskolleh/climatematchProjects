@@ -1,0 +1,310 @@
+{
+  "total_urls": 43,
+  "by_type": {
+    "OSF": 38,
+    "unknown": 5
+  },
+  "data": [
+    {
+      "url": "https://osf.io/7kcwn/download",
+      "filename": "ERA5_5vars_032018_hourly_NE-US.nc",
+      "variable_name": "ERA5_allvars",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D2_Ocean-AtmosphereReanalysis/W1D2_Tutorial2.ipynb"
+    },
+    {
+      "url": "https://osf.io/ke9yp/download",
+      "filename": "wind_evel_monthly_2016.nc",
+      "variable_name": "atm_wind_u",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D2_Ocean-AtmosphereReanalysis/W1D2_Tutorial4.ipynb"
+    },
+    {
+      "url": "https://osf.io/9zkgd/download",
+      "filename": "wind_nvel_monthly_2016.nc",
+      "variable_name": "atm_wind_v",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D2_Ocean-AtmosphereReanalysis/W1D2_Tutorial4.ipynb"
+    },
+    {
+      "url": "https://osf.io/tyfbv/download",
+      "filename": "evel_monthly_2016.nc",
+      "variable_name": "ocn_surface_current_u",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D2_Ocean-AtmosphereReanalysis/W1D2_Tutorial4.ipynb"
+    },
+    {
+      "url": "https://osf.io/vzdn4/download",
+      "filename": "nvel_monthly_2016.nc",
+      "variable_name": "ocn_surface_current_v",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D2_Ocean-AtmosphereReanalysis/W1D2_Tutorial4.ipynb"
+    },
+    {
+      "url": "https://osf.io/98ksr/download",
+      "filename": "data_fname_surface_temp.nc",
+      "variable_name": "fname_surface_temp",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D2_Ocean-AtmosphereReanalysis/W1D2_Tutorial4.ipynb"
+    },
+    {
+      "url": "https://osf.io/3q4vs/download",
+      "filename": "data_era5_mm.nc",
+      "variable_name": "era5_mm",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D2_Ocean-AtmosphereReanalysis/W1D2_Tutorial3.ipynb"
+    },
+    {
+      "url": "https://osf.io/aufs2/download",
+      "filename": "data_salt.nc",
+      "variable_name": "salt",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D2_Ocean-AtmosphereReanalysis/W1D2_Tutorial5.ipynb"
+    },
+    {
+      "url": "https://osf.io/c8wqt/download",
+      "filename": "data_theta_annual.nc",
+      "variable_name": "theta_annual",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D2_Ocean-AtmosphereReanalysis/W1D2_Tutorial6.ipynb"
+    },
+    {
+      "url": "https://osf.io/kmy5w/download",
+      "filename": "data_Shakun2015_SST.nc",
+      "variable_name": "Shakun2015_SST",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/Projects_GoodResearchPractices/Projects_Tutorial6.ipynb"
+    },
+    {
+      "url": "https://osf.io/45fev/download",
+      "filename": "data_antarctica2015co2composite_cleaned.nc",
+      "variable_name": "antarctica2015co2composite_cleaned",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/Projects_GoodResearchPractices/Projects_Tutorial6.ipynb"
+    },
+    {
+      "url": "https://www.ncei.noaa.gov/pub/data/paleo/icecore/antarctica/antarctica2015co2composite.txt",
+      "filename": "data_antarctica2015.nc",
+      "variable_name": "antarctica2015",
+      "type": "unknown",
+      "notebook": "climate-course-content/tutorials/W1D4_Paleoclimate/W1D4_Tutorial4.ipynb"
+    },
+    {
+      "url": "https://www.ncei.noaa.gov/pub/data/paleo/icecore/antarctica/epica_domec/edc3deuttemp2007.txt",
+      "filename": "data_edc3deuttemp2007.nc",
+      "variable_name": "edc3deuttemp2007",
+      "type": "unknown",
+      "notebook": "climate-course-content/tutorials/W1D4_Paleoclimate/W1D4_Tutorial4.ipynb"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/LinkedEarth/paleoHackathon/main/data/Orbital_records/Sanbao_composite.csv",
+      "filename": "data_Sanbao_composite.nc",
+      "variable_name": "Sanbao_composite",
+      "type": "unknown",
+      "notebook": "climate-course-content/tutorials/W1D4_Paleoclimate/W1D4_Tutorial7.ipynb"
+    },
+    {
+      "url": "https://osf.io/p8tx3/download",
+      "filename": "data_tang.nc",
+      "variable_name": "tang",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D4_Paleoclimate/W1D4_Tutorial8.ipynb"
+    },
+    {
+      "url": "https://osf.io/gw2m5/download",
+      "filename": "data_PMIP3.nc",
+      "variable_name": "PMIP3",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D4_Paleoclimate/W1D4_Tutorial8.ipynb"
+    },
+    {
+      "url": "https://www.ncei.noaa.gov/pub/data/paleo/reconstructions/osman2021/LGMR_SAT_climo.nc",
+      "filename": "data_LGMR_SAT_climo.nc",
+      "variable_name": "LGMR_SAT_climo",
+      "type": "unknown",
+      "notebook": "climate-course-content/tutorials/W1D4_Paleoclimate/W1D4_Tutorial9.ipynb"
+    },
+    {
+      "url": "https://osf.io/sujvp/download/",
+      "filename": "data_tang.nc",
+      "variable_name": "tang",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D4_Paleoclimate/W1D4_Tutorial5.ipynb"
+    },
+    {
+      "url": "https://osf.io/gm2v9/download/",
+      "filename": "data_aden.nc",
+      "variable_name": "aden",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D4_Paleoclimate/W1D4_Tutorial5.ipynb"
+    },
+    {
+      "url": "https://osf.io/mr7d9/download/",
+      "filename": "data_Bosumtwi.nc",
+      "variable_name": "Bosumtwi",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D4_Paleoclimate/W1D4_Tutorial5.ipynb"
+    },
+    {
+      "url": "https://osf.io/k6e3a/download/",
+      "filename": "data_GC27.nc",
+      "variable_name": "GC27",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D4_Paleoclimate/W1D4_Tutorial5.ipynb"
+    },
+    {
+      "url": "https://www.ncei.noaa.gov/pub/data/paleo/coral/east_pacific/cobb2013-fan-modsplice-noaa.txt",
+      "filename": "data_cobb2013.nc",
+      "variable_name": "cobb2013",
+      "type": "unknown",
+      "notebook": "climate-course-content/tutorials/W1D4_Paleoclimate/W1D4_Tutorial2.ipynb"
+    },
+    {
+      "url": "https://osf.io/6pgc2/download/",
+      "filename": "data_sst.nc",
+      "variable_name": "sst",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D3_RemoteSensing/W1D3_Tutorial6.ipynb"
+    },
+    {
+      "url": "https://osf.io/8rwxb/download/",
+      "filename": "data_nino.nc",
+      "variable_name": "nino",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D3_RemoteSensing/W1D3_Tutorial7.ipynb"
+    },
+    {
+      "url": "https://osf.io/vhdcg/download/",
+      "filename": "data_precip.nc",
+      "variable_name": "precip",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D3_RemoteSensing/W1D3_Tutorial7.ipynb"
+    },
+    {
+      "url": "https://osf.io/y2pq7/download",
+      "filename": "data_Climatebench_train_val.nc",
+      "variable_name": "Climatebench_train_val",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D4_AIandClimateChange/W2D4_Tutorial3.ipynb"
+    },
+    {
+      "url": "https://osf.io/7tr49/download",
+      "filename": "data_spatial_test_data.nc",
+      "variable_name": "spatial_test_data",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D4_AIandClimateChange/W2D4_Tutorial5.ipynb"
+    },
+    {
+      "url": "https://osf.io/pkbwx/download",
+      "filename": "data_scenario_test_data.nc",
+      "variable_name": "scenario_test_data",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D4_AIandClimateChange/W2D4_Tutorial5.ipynb"
+    },
+    {
+      "url": "https://osf.io/4zynp/download",
+      "filename": "data_WashingtonDCSSH1.nc",
+      "variable_name": "WashingtonDCSSH1",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D3_ExtremesandVariability/W2D3_Tutorial5.ipynb"
+    },
+    {
+      "url": "https://osf.io/xs7h6/download",
+      "filename": "data_precipitationGermany.nc",
+      "variable_name": "precipitationGermany",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D3_ExtremesandVariability/W2D3_Tutorial3.ipynb"
+    },
+    {
+      "url": "https://osf.io/ngafk/download",
+      "filename": "data_cmip6_data.nc",
+      "variable_name": "cmip6_data",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D3_ExtremesandVariability/W2D3_Tutorial6.ipynb"
+    },
+    {
+      "url": "https://osf.io/69ms8/download",
+      "filename": "data_WBGT_day.nc",
+      "variable_name": "WBGT_day",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D3_ExtremesandVariability/W2D3_Tutorial8.ipynb"
+    },
+    {
+      "url": "https://osf.io/67b8m/download",
+      "filename": "data_SSP126.nc",
+      "variable_name": "SSP126",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D3_ExtremesandVariability/W2D3_Tutorial8.ipynb"
+    },
+    {
+      "url": "https://osf.io/fsx5y/download",
+      "filename": "data_SSP245.nc",
+      "variable_name": "SSP245",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D3_ExtremesandVariability/W2D3_Tutorial8.ipynb"
+    },
+    {
+      "url": "https://osf.io/pr456/download",
+      "filename": "data_SSP585.nc",
+      "variable_name": "SSP585",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D3_ExtremesandVariability/W2D3_Tutorial8.ipynb"
+    },
+    {
+      "url": "https://osf.io/dakv3/download",
+      "filename": "wbgt_hist_raw_runmean7_gev.nc",
+      "variable_name": "wbgt_hist",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D3_ExtremesandVariability/W2D3_Tutorial8.ipynb"
+    },
+    {
+      "url": "https://osf.io/ef9pv/download",
+      "filename": "wbgt_126_raw_runmean7_gev_2071-2100.nc",
+      "variable_name": "wbgt_126",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D3_ExtremesandVariability/W2D3_Tutorial8.ipynb"
+    },
+    {
+      "url": "https://osf.io/j4hfc/download",
+      "filename": "wbgt_245_raw_runmean7_gev_2071-2100.nc",
+      "variable_name": "wbgt_245",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D3_ExtremesandVariability/W2D3_Tutorial8.ipynb"
+    },
+    {
+      "url": "https://osf.io/y6edw/download",
+      "filename": "data_bgt_585.nc",
+      "variable_name": "bgt_585",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D3_ExtremesandVariability/W2D3_Tutorial8.ipynb"
+    },
+    {
+      "url": "https://osf.io/zqd86/download",
+      "filename": "data_area_mpi.nc",
+      "variable_name": "area_mpi",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D3_ExtremesandVariability/W2D3_Tutorial8.ipynb"
+    },
+    {
+      "url": "https://osf.io/dxq98/download",
+      "filename": "data_area_land_mpi.nc",
+      "variable_name": "area_land_mpi",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W2D3_ExtremesandVariability/W2D3_Tutorial8.ipynb"
+    },
+    {
+      "url": "https://osf.io/c6q4j/download/",
+      "filename": "data_sq.nc",
+      "variable_name": "sq",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D5_IntroductiontoClimateModeling/W1D5_Tutorial5.ipynb"
+    },
+    {
+      "url": "https://osf.io/w6cd5/download/",
+      "filename": "data_ncep_air.nc",
+      "variable_name": "ncep_air",
+      "type": "OSF",
+      "notebook": "climate-course-content/tutorials/W1D5_IntroductiontoClimateModeling/W1D5_Tutorial5.ipynb"
+    }
+  ]
+}
