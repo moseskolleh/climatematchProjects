@@ -1,0 +1,227 @@
+# Example Configuration for Coastal Risk Assessment
+# Copy this file to config.yaml and modify for your specific analysis
+
+# Target City
+city:
+  name: "Lagos"
+  country: "Nigeria"
+  coordinates:
+    latitude: 6.4541
+    longitude: 3.3947
+  timezone: "Africa/Lagos"
+
+# Data Sources
+data:
+  # Historical data period
+  start_year: 2000
+  end_year: 2023
+
+  # Hazard variables to include
+  hazard_variables:
+    - sea_level
+    - storm_surge
+    - precipitation
+    - wave_height
+
+  # Data directories
+  directories:
+    raw: "data/raw"
+    processed: "data/processed"
+    synthetic: "data/synthetic"
+
+  # Quality control thresholds
+  quality_control:
+    outlier_threshold: 4  # Standard deviations
+    minimum_completeness: 0.7  # 70% data coverage required
+    gap_fill_limit: 7  # Maximum days to interpolate
+
+# Bayesian Network Configuration
+bayesian_network:
+  # Use hierarchical approach (recommended for sparse data)
+  hierarchical: true
+
+  # MCMC sampling parameters
+  mcmc:
+    n_samples: 2000
+    tune: 1000
+    chains: 4
+    target_accept: 0.95
+
+  # Prior distributions
+  priors:
+    # Global hyperparameters
+    mu_global:
+      distribution: "Normal"
+      mu: 0
+      sigma: 10
+    sigma_global:
+      distribution: "HalfNormal"
+      sigma: 5
+
+# Agent-Based Model Configuration
+agent_based_model:
+  # Number of household agents
+  n_households: 10000
+
+  # Spatial configuration
+  spatial:
+    resolution: 100  # meters per grid cell
+    width: 100       # grid cells
+    height: 100      # grid cells
+
+  # Household characteristics (distributions)
+  households:
+    # Wealth distribution (log-normal parameters)
+    wealth:
+      mean_log: 6.9  # ln(1000)
+      sigma_log: 0.8
+
+    # Household size distribution
+    size_distribution: [0.15, 0.25, 0.25, 0.20, 0.10, 0.05]  # 1-6 people
+
+    # Education level distribution
+    education:
+      low: 0.4
+      medium: 0.4
+      high: 0.2
+
+  # Decision-making parameters
+  decision:
+    # Discount rate for NPV calculations
+    discount_rate: 0.05
+
+    # Risk aversion (Beta distribution parameters)
+    risk_aversion:
+      alpha: 2
+      beta: 2
+
+    # Adaptation cost as fraction of wealth
+    adaptation_cost_fraction: 0.15
+
+  # Simulation settings
+  simulation:
+    steps_per_scenario: 365  # days
+    seed: 42
+
+# Scenario Generation
+scenarios:
+  # Number of scenarios to generate
+  n_scenarios: 1000
+
+  # Future projection year
+  future_year: 2050
+
+  # Climate trends (for projections)
+  trends:
+    # Sea level rise (mm/year)
+    slr_rate: 3.3
+
+    # Storm surge intensification (fraction per decade)
+    surge_intensification: 0.01
+
+  # Return periods of interest (years)
+  return_periods: [10, 25, 50, 100]
+
+# Uncertainty Analysis
+uncertainty:
+  # Uncertain factors and their ranges [min, max]
+  factors:
+    slr_rate: [3.0, 10.0]                    # mm/year
+    storm_frequency: [2, 6]                   # events/year
+    population_growth: [0.02, 0.05]           # annual rate
+    adaptation_cost_multiplier: [0.5, 2.0]    # cost uncertainty
+
+  # Robustness metrics to calculate
+  robustness_metrics:
+    - regret
+    - percentile
+    - satisficing
+
+  # Percentile for worst-case analysis
+  worst_case_percentile: 10
+
+# Adaptation Strategies
+strategies:
+  - name: "Seawall"
+    cost: 50000000  # USD
+    protection_level: 0.8
+    implementation_time: 3  # years
+    maintenance_cost_annual: 1000000
+
+  - name: "Nature-based Solutions"
+    cost: 20000000
+    protection_level: 0.5
+    implementation_time: 2
+    maintenance_cost_annual: 500000
+
+  - name: "Managed Retreat"
+    cost: 30000000
+    protection_level: 1.0
+    implementation_time: 5
+    maintenance_cost_annual: 0
+
+  - name: "Early Warning System"
+    cost: 5000000
+    protection_level: 0.3  # Through preparedness
+    implementation_time: 1
+    maintenance_cost_annual: 500000
+
+  - name: "No Action"
+    cost: 0
+    protection_level: 0.0
+    implementation_time: 0
+    maintenance_cost_annual: 0
+
+# Objectives for Multi-Criteria Analysis
+objectives:
+  - name: "minimize_casualties"
+    weight: 0.4
+    threshold: 100  # fatalities
+
+  - name: "minimize_economic_loss"
+    weight: 0.4
+    threshold: 10000000  # USD
+
+  - name: "minimize_disruption"
+    weight: 0.2
+    threshold: 30  # days
+
+# Output Configuration
+output:
+  # Results directory
+  results_dir: "results"
+
+  # Export formats
+  formats:
+    - csv
+    - hdf5
+    - geojson  # For spatial outputs
+
+  # Visualization settings
+  visualization:
+    dpi: 300
+    format: "png"
+    save_path: "results/figures"
+
+  # Reporting
+  report:
+    generate_summary: true
+    include_maps: true
+    include_uncertainty_plots: true
+
+# Computational Settings
+computation:
+  # Number of parallel processes
+  n_jobs: 4
+
+  # Memory limits (GB)
+  max_memory: 16
+
+  # Use GPU if available
+  use_gpu: false
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: "logs/coastal_risk.log"
+  console: true
