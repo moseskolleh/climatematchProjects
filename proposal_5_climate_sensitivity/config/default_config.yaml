@@ -1,0 +1,94 @@
+# Default Configuration for Climate Sensitivity Framework
+
+# Data directories
+data:
+  root_dir: "./data"
+  raw_dir: "./data/raw"
+  processed_dir: "./data/processed"
+  model_outputs_dir: "./data/model_outputs"
+
+# CMIP settings
+cmip:
+  experiments:
+    - "abrupt-4xCO2"
+    - "piControl"
+    - "historical"
+  variables:
+    - "tas"
+    - "ts"
+    - "rtnt"
+    - "rlut"
+    - "rsut"
+    - "rsdt"
+  models:
+    - "CESM2"
+    - "GFDL-CM4"
+    - "IPSL-CM6A"
+    - "UKESM1"
+    - "CanESM5"
+    - "MIROC6"
+
+# Paleoclimate settings
+paleoclimate:
+  periods:
+    - "LGM"
+    - "MPWP"
+  proxy_types:
+    - "foram"
+    - "alkenone"
+    - "mg_ca"
+
+# Observational settings
+observations:
+  datasets:
+    - "HadCRUT5"
+    - "CERES"
+    - "ARGO"
+  start_year: 1850
+  end_year: 2023
+
+# Constraint settings
+constraints:
+  lgm:
+    enabled: true
+    global_cooling: -5.0  # °C
+    cooling_uncertainty: 0.7  # °C
+
+  mpwp:
+    enabled: true
+    global_warming: 2.5  # °C
+    warming_uncertainty: 0.5  # °C
+
+  historical:
+    enabled: true
+    observed_warming: 1.1  # °C
+    warming_uncertainty: 0.1  # °C
+
+  energy_budget:
+    enabled: true
+    toa_imbalance: 0.7  # W/m²
+    imbalance_uncertainty: 0.2  # W/m²
+
+# Multi-constraint framework
+multi_constraint:
+  method: "bayesian"  # Options: bayesian, equal_weight, variance_weighted
+  min_agreement: 2  # Minimum number of agreeing constraints
+  n_samples: 10000  # Number of samples for distributions
+
+# Validation settings
+validation:
+  perfect_model_test: true
+  independence_test: true
+  correlation_threshold: 0.7
+
+# Output settings
+output:
+  results_dir: "./results"
+  save_plots: true
+  save_data: true
+  plot_format: "png"  # Options: png, pdf, svg
+
+# Logging
+logging:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR
+  file: "climate_sensitivity.log"
