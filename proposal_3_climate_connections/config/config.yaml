@@ -1,0 +1,218 @@
+# Configuration for Climate Teleconnection Discovery System
+
+# Project metadata
+project:
+  name: "Theory-Guided Climate Teleconnection Discovery"
+  version: "0.1.0"
+  author: "Moses Kolleh"
+  institution: "Digital Society School, Amsterdam University of Applied Sciences"
+
+# Data sources
+data_sources:
+  era5:
+    enabled: true
+    cache_dir: "data/raw/ERA5"
+    variables:
+      - "geopotential"
+      - "temperature"
+      - "u_component_of_wind"
+      - "v_component_of_wind"
+      - "vertical_velocity"
+    levels: [1000, 850, 500, 250, 100]  # hPa
+
+  merra2:
+    enabled: true
+    cache_dir: "data/raw/MERRA2"
+
+  jra55:
+    enabled: true
+    cache_dir: "data/raw/JRA55"
+
+# Time period
+time_period:
+  start_date: "1979-01-01"
+  end_date: "2023-12-31"
+  baseline_period:
+    start: "1981-01-01"
+    end: "2010-12-31"
+
+# Spatial domain
+domain:
+  global:
+    north: 90
+    south: -90
+    east: 180
+    west: -180
+
+  # African focus regions
+  sahel:
+    north: 20
+    south: 10
+    east: 40
+    west: -20
+
+  east_africa:
+    north: 15
+    south: -10
+    east: 52
+    west: 25
+
+  southern_africa:
+    north: -15
+    south: -35
+    east: 40
+    west: 10
+
+# Preprocessing
+preprocessing:
+  detrend: true
+  deseasonalize: true
+  quality_control:
+    max_missing_fraction: 0.05
+    outlier_threshold: 5.0  # standard deviations
+
+  gap_filling:
+    method: "linear"  # or "climatology"
+    max_gap_days: 90
+
+  filtering:
+    spatial_smoothing:
+      enabled: true
+      sigma_km: 500
+
+    temporal:
+      intraseasonal:
+        enabled: true
+        period_days: [30, 90]
+
+      interannual:
+        enabled: true
+        period_years: [1, 7]
+
+# Causal discovery
+causal_discovery:
+  granger:
+    max_lag: 12
+    alpha: 0.01
+
+  ccm:
+    embedding_dim: 3
+    tau: 1
+    min_lib_size: 50
+
+  transfer_entropy:
+    history_length: 1
+    n_bins: 10
+    n_permutations: 1000
+
+  structural:
+    method: "pc"  # PC algorithm
+    alpha: 0.01
+
+# Physical constraints
+physical_constraints:
+  rossby_wave:
+    tolerance: 0.5  # 50% deviation allowed
+
+  energy_conservation:
+    max_residual: 0.10  # 10% of total
+
+  timescale:
+    min_days: 7
+    max_days: 3650
+
+# Statistical validation
+validation:
+  bootstrap:
+    n_iterations: 10000
+    confidence_level: 0.99
+
+  fdr:
+    alpha: 0.01
+    method: "benjamini_hochberg"
+
+  cross_validation:
+    temporal:
+      n_folds: 4
+
+    reanalysis:
+      required_agreement: 2  # out of 3 datasets
+
+# Discovery campaign
+discovery:
+  # Source regions to test
+  source_regions:
+    - name: "tropical_pacific"
+      lat: [-20, 20]
+      lon: [120, -80]
+
+    - name: "indian_ocean"
+      lat: [-20, 20]
+      lon: [40, 120]
+
+    - name: "tropical_atlantic"
+      lat: [-20, 20]
+      lon: [-60, 20]
+
+    - name: "north_atlantic"
+      lat: [30, 70]
+      lon: [-80, 0]
+
+  # Target regions (African climate zones)
+  target_regions:
+    - name: "sahel"
+      lat: [10, 20]
+      lon: [-20, 40]
+
+    - name: "east_africa"
+      lat: [-10, 15]
+      lon: [25, 52]
+
+    - name: "southern_africa"
+      lat: [-35, -15]
+      lon: [10, 40]
+
+  # Thresholds for significance
+  thresholds:
+    min_correlation: 0.3
+    max_p_value: 0.01
+    min_effect_size: 0.5
+
+# Operational system
+operational:
+  update_frequency: "daily"
+
+  monitoring:
+    alert_threshold: 1.5  # standard deviations
+
+  forecasting:
+    lead_times: [1, 2, 3, 6]  # months
+    ensemble_size: 50
+
+# Output
+output:
+  results_dir: "data/results"
+
+  formats:
+    - "netcdf"
+    - "csv"
+    - "json"
+
+  visualization:
+    dpi: 300
+    format: "png"
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/teleconnection_discovery.log"
+
+# Computing
+computing:
+  n_workers: 4
+  memory_limit: "8GB"
+
+  cloud:
+    provider: "aws"  # or "gcp"
+    region: "eu-west-1"
