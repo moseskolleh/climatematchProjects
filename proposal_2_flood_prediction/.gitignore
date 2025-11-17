@@ -1,0 +1,87 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Data (large files)
+data/raw/*.nc
+data/raw/*.tif
+data/raw/*.hdf5
+data/processed/*.nc
+data/processed/*.pkl
+*.h5
+*.hdf5
+
+# Model checkpoints and outputs
+results/models/*.h5
+results/models/*.pt
+results/models/*.pth
+results/figures/
+results/forecasts/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+
+# Documentation builds
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# Large datasets (keep structure, not content)
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/basins/.gitkeep
+
+# Credentials and secrets
+*.pem
+*.key
+credentials.json
+secrets.yaml
