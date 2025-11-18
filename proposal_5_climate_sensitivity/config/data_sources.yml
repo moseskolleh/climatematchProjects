@@ -1,0 +1,142 @@
+# Data source specifications for climate sensitivity analysis
+
+# Historical temperature datasets
+temperature_data:
+  hadcrut5:
+    name: "HadCRUT5"
+    url: "https://www.metoffice.gov.uk/hadobs/hadcrut5/data/current/download.html"
+    version: "5.0.1.0"
+    spatial_resolution: "5deg"
+    temporal_resolution: "monthly"
+    coverage: "1850-present"
+
+  best:
+    name: "Berkeley Earth Surface Temperature"
+    url: "http://berkeleyearth.org/data/"
+    version: "latest"
+    spatial_resolution: "1deg"
+    temporal_resolution: "monthly"
+    coverage: "1850-present"
+
+# Ocean heat content
+ocean_heat:
+  argo:
+    name: "Argo Program"
+    url: "https://www.nodc.noaa.gov/argo/"
+    coverage: "2005-present"
+    depth_range: "0-2000m"
+
+  wod:
+    name: "World Ocean Database"
+    url: "https://www.ncei.noaa.gov/products/world-ocean-database"
+    coverage: "1955-present"
+
+# Radiative forcing
+forcing:
+  ipcc_ar6:
+    name: "IPCC AR6 Effective Radiative Forcing"
+    url: "https://catalogue.ceda.ac.uk/uuid/9c6f410ecd7a4f6fb0f9c82b4e6f4e95"
+    components:
+      - "greenhouse_gases"
+      - "aerosols"
+      - "ozone"
+      - "land_use"
+      - "solar"
+      - "volcanic"
+    reference_period: "1750"
+
+# Top-of-atmosphere radiation
+toa_radiation:
+  ceres_ebaf:
+    name: "CERES Energy Balanced and Filled"
+    url: "https://ceres.larc.nasa.gov/data/"
+    version: "Ed4.1"
+    spatial_resolution: "1deg"
+    temporal_resolution: "monthly"
+    coverage: "2000-present"
+
+# Paleoclimate data
+paleoclimate:
+  lgm:
+    name: "Last Glacial Maximum"
+    time_period: "21000 years ago"
+    sources:
+      pmip4:
+        name: "PMIP4 Model Ensemble"
+        url: "https://pmip4.lsce.ipsl.fr/"
+        n_models: 13
+
+      proxies:
+        name: "Temperature Proxy Compilation"
+        reference: "Tierney et al. (2020) Nature"
+        global_cooling: -6.1  # K
+        uncertainty: 0.4  # K
+
+  pliocene:
+    name: "Mid-Pliocene Warm Period"
+    time_period: "3.3-3.0 Ma"
+    sources:
+      pliomip2:
+        name: "PlioMIP2 Model Ensemble"
+        url: "https://geology.er.usgs.gov/egpsc/prism/7_pliomip2.html"
+        n_models: 17
+
+      proxies:
+        reference: "Haywood et al. (2020) Clim. Past"
+        global_warming: 3.2  # K relative to preindustrial
+        uncertainty: 1.2  # K
+        co2_concentration: 400  # ppm
+
+# CMIP6 model data
+cmip6:
+  name: "Coupled Model Intercomparison Project Phase 6"
+  url: "https://esgf-node.llnl.gov/search/cmip6/"
+
+  experiments:
+    - "piControl"  # Pre-industrial control
+    - "abrupt-4xCO2"  # Abrupt CO2 quadrupling
+    - "1pctCO2"  # 1% per year CO2 increase
+    - "historical"  # Historical simulations
+
+  variables:
+    - "tas"  # Surface air temperature
+    - "rlut"  # TOA outgoing longwave
+    - "rsut"  # TOA outgoing shortwave
+    - "rsdt"  # TOA incoming shortwave
+
+  feedback_diagnostics:
+    cloud_radiative_kernels:
+      reference: "Zelinka et al. (2020) GRL"
+      url: "https://github.com/mzelinka/cmip56_forcing_feedback_ecs"
+
+# Reanalysis data
+reanalysis:
+  era5:
+    name: "ERA5 Reanalysis"
+    url: "https://www.ecmwf.int/en/forecasts/datasets/reanalysis-datasets/era5"
+    spatial_resolution: "0.25deg"
+    temporal_resolution: "hourly"
+    coverage: "1979-present"
+    variables:
+      - "temperature"
+      - "humidity"
+      - "clouds"
+      - "radiation"
+
+# Data processing settings
+processing:
+  reference_period:
+    start_year: 1850
+    end_year: 1900
+
+  target_period:
+    start_year: 2010
+    end_year: 2020
+
+  quality_control:
+    min_data_coverage: 0.7  # 70% data availability required
+    outlier_threshold: 5  # standard deviations
+
+  spatial_aggregation:
+    method: "area_weighted"
+    missing_data: "interpolate"
