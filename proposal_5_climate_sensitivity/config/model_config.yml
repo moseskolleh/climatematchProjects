@@ -1,0 +1,131 @@
+# Bayesian model configuration for climate sensitivity analysis
+
+# Prior distributions
+priors:
+  # Prior on Equilibrium Climate Sensitivity (ECS)
+  ecs:
+    type: "jeffreys"  # Options: "uniform", "jeffreys", "informed"
+    parameters:
+      low: 0.5  # K
+      high: 10.0  # K
+
+  # For informed prior (alternative)
+  ecs_informed:
+    type: "informed"
+    parameters:
+      mean: 3.0  # K (CMIP6 ensemble mean)
+      std: 1.5  # K
+
+  # Transient Climate Response (TCR)
+  tcr:
+    type: "uniform"
+    parameters:
+      low: 0.5  # K
+      high: 4.0  # K
+
+# Sampling parameters
+mcmc:
+  sampler: "nuts"  # No-U-Turn Sampler (NUTS)
+  n_samples: 50000
+  n_chains: 4
+  burn_in: 10000
+  target_accept: 0.95
+  max_tree_depth: 12
+
+  # Parallel sampling
+  cores: 4
+
+  # Convergence diagnostics
+  check_convergence: true
+  r_hat_threshold: 1.01  # Gelman-Rubin statistic
+
+# Constraint integration
+constraints:
+  # Weights for different constraint types
+  # Set to null for automatic weighting based on uncertainty
+  weights:
+    paleoclimate: null
+    observational: null
+    process_based: null
+
+  # Dependency matrix (correlation between constraints)
+  # null means independence assumed
+  dependency_matrix: null
+
+  # Minimum information content required
+  min_information_gain: 0.1  # bits
+
+# Validation settings
+validation:
+  perfect_model:
+    enabled: true
+    confidence_level: 0.90
+    leave_one_out: true
+
+  cross_generation:
+    enabled: true
+    training_generation: "cmip5"
+    test_generation: "cmip6"
+
+  constraint_independence:
+    method: "mutual_information"
+    significance_level: 0.05
+
+# Uncertainty quantification
+uncertainty:
+  # Separate aleatory and epistemic uncertainties
+  decomposition: true
+
+  # Confidence intervals to report
+  confidence_levels:
+    - 0.66  # Likely (IPCC terminology)
+    - 0.90  # Very likely
+    - 0.95  # Extremely likely
+
+  # Sensitivity analysis
+  sensitivity_analysis:
+    enabled: true
+    parameters:
+      - "prior_type"
+      - "constraint_weights"
+      - "correlation_assumptions"
+
+# Output settings
+output:
+  # Save posterior samples
+  save_samples: true
+  samples_format: "netcdf"  # Options: "netcdf", "csv", "hdf5"
+
+  # Diagnostic plots
+  create_plots: true
+  plot_formats:
+    - "png"
+    - "pdf"
+
+  # Report generation
+  generate_report: true
+  report_format: "markdown"  # Options: "markdown", "html", "latex"
+
+  # Precision for numerical outputs
+  decimal_places: 3
+
+# Performance optimization
+performance:
+  # Use GPU acceleration if available
+  use_gpu: false
+
+  # Parallel processing
+  parallel: true
+  n_workers: 4
+
+  # Memory management
+  chunk_size: 1000  # For large datasets
+  cache_intermediate: true
+
+  # Numerical stability
+  float_precision: "float64"
+
+# Reproducibility
+random_seed: 42
+save_config: true
+version_info: true
