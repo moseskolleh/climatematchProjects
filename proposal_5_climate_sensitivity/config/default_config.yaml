@@ -1,0 +1,89 @@
+# Default Configuration for Multi-Constraint Framework
+
+# ECS range to explore
+ecs_range:
+  min: 1.0
+  max: 6.0
+  n_points: 1000
+
+# Prior distribution
+prior:
+  type: uniform  # Options: uniform, informed, jeffreys, custom
+  params:
+    # For informed prior
+    mean: 3.0
+    std: 1.5
+
+# Constraints to use
+constraints:
+  lgm:
+    enabled: true
+    co2_lgm: 190.0
+    co2_pi: 280.0
+    state_dependence: 1.0
+
+  mpwp:
+    enabled: true
+    co2_mpwp: 400.0
+    co2_pi: 280.0
+
+  lig:
+    enabled: true
+
+  historical:
+    enabled: true
+    baseline_period: [1850, 1900]
+    recent_period: [2010, 2020]
+
+  pattern:
+    enabled: false  # Disable by default
+
+  cloud_feedback:
+    enabled: true
+
+# Integration settings
+integration:
+  method: bayesian  # Options: bayesian, equal_weight, weighted
+  test_independence: true
+  independence_threshold: 0.3
+
+# Uncertainty quantification
+uncertainty:
+  n_samples: 100000
+  decompose: true
+  bootstrap_iterations: 10000
+
+# Validation settings
+validation:
+  perfect_model_test: true
+  cross_generation_test: true
+  sensitivity_analysis: true
+
+# Output settings
+output:
+  save_samples: true
+  save_plots: true
+  save_reports: true
+  output_dir: results/
+  format: netcdf  # Options: netcdf, csv, pickle
+
+# Plotting settings
+plotting:
+  style: seaborn
+  dpi: 300
+  format: png
+  show_individual_constraints: true
+  show_prior: true
+
+# Data paths
+data:
+  paleoclimate_dir: data/processed/paleoclimate/
+  observational_dir: data/processed/observational/
+  model_dir: data/processed/models/
+  raw_data_dir: data/raw/
+
+# Computational settings
+compute:
+  n_cores: 4
+  use_dask: false
+  memory_limit: 16GB
